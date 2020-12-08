@@ -6,7 +6,6 @@ package oauth2
 
 import (
 	"errors"
-	"log"
 	"net/http"
 	"sync"
 )
