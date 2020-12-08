@@ -57,16 +57,6 @@ func (t *Transport) RoundTrip(req *http.Request) (*http.Response, error) {
 
 var cancelOnce sync.Once
 
-// CancelRequest does nothing. It used to be a legacy cancellation mechanism
-// but now only it only logs on first use to warn that it's deprecated.
-//
-// Deprecated: use contexts for cancellation instead.
-func (t *Transport) CancelRequest(req *http.Request) {
-	cancelOnce.Do(func() {
-		log.Printf("deprecated: golang.org/x/oauth2: Transport.CancelRequest no longer does anything; use contexts")
-	})
-}
-
 func (t *Transport) base() http.RoundTripper {
 	if t.Base != nil {
 		return t.Base
